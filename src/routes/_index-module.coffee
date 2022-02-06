@@ -29,16 +29,16 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
 
             date = dayjs(date, 'MMM D').format 'YYYY-MM-DD'
 
-            item = {}
-            item[date] = count
-            orbs.push item
+            orbs.push item =
+                x: date
+                y: count
 
         if matches = line.match bannerLineRE
             [_, date, banner] = matches
 
-            item = {}
-            item[date] = banner
-            banners.push item
+            banners.push item =
+                x: date
+                y: banner
 
     data.orbs = orbs
     data.banners = banners

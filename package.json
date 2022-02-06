@@ -10,9 +10,12 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
+    "chart.js": "^3.7.0",
+    "chartjs-adapter-luxon": "^1.1.0",
     "cheerio": "^1.0.0-rc.10",
     "coffeescript": "^2.6.1",
     "dayjs": "^1.10.7",
+    "luxon": "^2.3.0",
     "svelte": "^3.44.0",
     "svelte-preprocess": "^4.10.1",
     "turndown": "^7.1.1",

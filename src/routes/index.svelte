@@ -3,6 +3,9 @@
 
 
 {data.url}
+
+<canvas bind:this='{canvas}' width="400" height="400"></canvas>
+
 <pre>
     {JSON.stringify(data.banners, null, 4)}
 </pre>
