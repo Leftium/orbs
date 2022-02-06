@@ -2,7 +2,8 @@
 <script src='./_index.coffee'></script>
 
 
-{url}
+{data.url}
 <pre>
-    {text}
+    {data.markdown}
 </pre>
+

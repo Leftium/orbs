@@ -1,2 +1,2 @@
-export text=null  # Prop passed from load().
+export data=null  # Prop passed from load().
 

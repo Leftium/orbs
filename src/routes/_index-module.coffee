@@ -1,20 +1,10 @@
-import * as cheerio from 'cheerio'
-import TurndownService from 'turndown'
+targetUrl = 'https://www.reddit.com/r/FireEmblemHeroes/comments/s19x8o'
 
-turndownService = new TurndownService()
-url = 'https://www.reddit.com/r/FireEmblemHeroes/comments/s19x8o/'
-
-_load = ({ params, fetch, session, stuff }) ->
-    response = await fetch url
-    html = await response.text()
-
-    $ = cheerio.load html
-    html = $('div[data-click-id="text"]').html()  # Isolate main post.
-
-    text = turndownService.turndown html          # Convert to markdown.
+_load = ({ url, params, props, fetch, session, stuff }) ->
+    response = await fetch "#{url.origin}/api/r2md/#{targetUrl}"
+    data     = await response.json()
 
     return output =
-        props:
-            text: text
+        props: { data }
 
 `export const load = _load`
