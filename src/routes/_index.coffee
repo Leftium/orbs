@@ -12,22 +12,32 @@ export data=null  # Prop passed from load().
 
 export canvas = null
 
-currentOrbs = 300
+chart = null
 
-sum = 0
-cumulativeOrbs = []
-netOrbs = []
-for orb in data.orbs
-    sum += orb.y
-    cumulativeOrbs.push item =
-        x: orb.x
-        y: sum
+initialOrbs = 300
 
-    netOrbs.push item =
-        x: orb.x
-        y: currentOrbs + sum
 
-    currentOrbs -= 21
+
+calculateChartData = () ->
+    cumulativeOrbs = []
+    netOrbs = []
+
+    sum = 0
+    currentOrbs = initialOrbs
+    for orb in data.orbs
+        sum += orb.y
+        cumulativeOrbs.push item =
+            x: orb.x
+            y: sum
+
+        netOrbs.push item =
+            x: orb.x
+            y: currentOrbs + sum
+
+        currentOrbs -= 21
+
+    {cumulativeOrbs, netOrbs}
+
 
 makeAnnotation = (date, content) ->
     annotation =
@@ -56,12 +66,21 @@ for banner,i in data.banners
         annotations.push makeAnnotation banner.date, label[2..]
         label = ''
 
+handleChange = (e) ->
+    {cumulativeOrbs, netOrbs} = calculateChartData()
+
+    chart.data.datasets[0].data = cumulativeOrbs
+    chart.data.datasets[1].data = netOrbs
+
+    chart.update()
+
 onMount () ->
+    {cumulativeOrbs, netOrbs} = calculateChartData()
     chart = new Chart canvas, options =
          type: 'line'
          data:
             datasets: [{
-                label: 'Estimated Orbs',
+                label: 'Orb Income',
                 data: cumulativeOrbs,
                 borderColor: 'rgb(38,139,210)',
                 fill:
