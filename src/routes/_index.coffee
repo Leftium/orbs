@@ -1,1 +1,2 @@
-console.log 'coffee!'
+export text=null  # Prop passed from load().
+
