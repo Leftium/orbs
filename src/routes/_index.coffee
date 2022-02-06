@@ -12,14 +12,22 @@ export data=null  # Prop passed from load().
 
 export canvas = null
 
+currentOrbs = 300
+
 sum = 0
 cumulativeOrbs = []
+netOrbs = []
 for orb in data.orbs
     sum += orb.y
     cumulativeOrbs.push item =
         x: orb.x
         y: sum
 
+    netOrbs.push item =
+        x: orb.x
+        y: currentOrbs + sum
+
+    currentOrbs -= 21
 
 makeAnnotation = (date, content) ->
     annotation =
@@ -53,10 +61,20 @@ onMount () ->
          type: 'line'
          data:
             datasets: [{
-                label: 'Orbs',
+                label: 'Estimated Orbs',
                 data: cumulativeOrbs,
-                fill: true,
-                borderColor: 'rgb(75, 192, 192)',
+                borderColor: 'rgb(38,139,210)',
+                fill:
+                    target: 'origin'
+                    above: 'rgb(38,139,210,0.1)'
+            }, {
+                label: 'Net Orbs',
+                data: netOrbs,
+                borderColor: 'rgb(220,50,47)',
+                fill:
+                    target: 'origin'
+                    above: 'rgb(220,50,47,0.1)'
+                    below: 'rgba(0,0,0,0)'
             }]
          options:
             plugins:
