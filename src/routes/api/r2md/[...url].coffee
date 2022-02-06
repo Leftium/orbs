@@ -18,6 +18,3 @@ export get = ({request, url, params, locals, platform}) ->
             url: params.url
             markdown: markdown
 
-
-
-
