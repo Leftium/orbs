@@ -34,11 +34,9 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
                 y: count
 
         if matches = line.match bannerLineRE
-            [_, date, banner] = matches
+            [_, date, name] = matches
 
-            banners.push item =
-                x: date
-                y: banner
+            banners.push { date, name }
 
     data.orbs = orbs
     data.banners = banners

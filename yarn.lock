@@ -422,6 +422,11 @@ chartjs-adapter-luxon@^1.1.0:
   resolved "https://registry.yarnpkg.com/chartjs-adapter-luxon/-/chartjs-adapter-luxon-1.1.0.tgz#0a0d9213db5de0ad3285fae896b4c4b74db9007b"
   integrity sha512-CS+xBWEyXYVLBZ3dSY/MwlSXhz8er4JjkApazY84ft/++oOLsmkt6TaXBCsUFudum7QdoYmpxiL/gSp20+emkw==
 
+chartjs-plugin-annotation@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/chartjs-plugin-annotation/-/chartjs-plugin-annotation-1.3.0.tgz#57aa3c8fde4d4626c32d45a9c1730630aad98107"
+  integrity sha512-TF2Y+ZYnz5TdSmyU1WIeWqXXcIS+3GfWkJOrdovd/JgdLzKxw7/paj01FVeAtTzfRPdc6dy/zQERoBdYSstYsw==
+
 cheerio-select@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/cheerio-select/-/cheerio-select-1.5.0.tgz#faf3daeb31b17c5e1a9dabcee288aaf8aafa5823"
