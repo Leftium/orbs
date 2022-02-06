@@ -10,9 +10,11 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
+    "cheerio": "^1.0.0-rc.10",
+    "coffeescript": "^2.6.1",
     "svelte": "^3.44.0",
     "svelte-preprocess": "^4.10.1",
-    "coffeescript": "^2.6.1",
+    "turndown": "^7.1.1",
     "vite-plugin-coffee": "^2.2.1"
   },
   "type": "module"
