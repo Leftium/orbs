@@ -4,6 +4,9 @@
 
 {data.url}
 <pre>
-    {data.markdown}
+    {JSON.stringify(data.banners, null, 4)}
+</pre>
+<pre>
+    {JSON.stringify(data.orbs, null, 4)}
 </pre>
 

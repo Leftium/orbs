@@ -12,6 +12,7 @@
     "@sveltejs/kit": "next",
     "cheerio": "^1.0.0-rc.10",
     "coffeescript": "^2.6.1",
+    "dayjs": "^1.10.7",
     "svelte": "^3.44.0",
     "svelte-preprocess": "^4.10.1",
     "turndown": "^7.1.1",
