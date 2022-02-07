@@ -20,7 +20,7 @@
 
 <div class=initial-orbs>
     <label>
-        <div><span>Initial Orbs</span><div>
+        <div><span>My Initial Orbs</span><div>
         <input
             type=number
             inputmode='decimal'

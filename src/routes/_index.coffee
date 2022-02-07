@@ -113,7 +113,7 @@ onMount () ->
          type: 'line'
          data:
             datasets: [{
-                label: 'Net Orbs'
+                label: 'My Orbs'
                 data: netOrbs
                 borderColor: 'rgb(55,126,184)'
                 backgroundColor: 'rgb(55,126,184)'
