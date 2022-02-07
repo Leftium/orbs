@@ -47,17 +47,18 @@ calculateChartData = () ->
     {cumulativeOrbs, netOrbs}
 
 
-makeAnnotation = (date, content) ->
+makeAnnotation = (date, content, color='152,78,163', adjust=true) ->
     annotation =
         type: 'line'
         scaleID: 'x'
         borderWidth: 2
-        borderColor: 'rgba(152,78,163,0.4)'
+        borderColor: "rgba(#{color},0.4)"
         drawTime: 'beforeDatasetsDraw'
         value: date
+        adjustScaleRange: adjust
         label:
             content: content
-            color: 'rgba(152,78,163,1)'
+            color: "rgba(#{color},1)"
             backgroundColor: 'rgba(0, 0, 0, 0)'
             font:
                 size: 15
@@ -68,13 +69,16 @@ makeAnnotation = (date, content) ->
             enabled: true
 
 annotations = []
+
+annotations.push makeAnnotation new Date(), 'Today', '0,0,0', false
+
 label = ''
 for banner,i in data.banners
     label += " | #{banner.name.replace /:.*/, ''}"
     if banner.date isnt data.banners[i+1]?.date
         if label.length > 40
             label = label[0..40] + '...'
-        annotations.push makeAnnotation banner.date, label[2..]
+        annotations.push makeAnnotation banner.date, label[3..]
         label = ''
 
 handleChange = (e) ->
