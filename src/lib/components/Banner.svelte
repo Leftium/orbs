@@ -15,12 +15,17 @@
             <AutoComplete
                 items={suggestions}
                 bind:selectedItem={selectedOption}
-                noResultsText=''
-                hideArrow=true
+                bind:text={text}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                inputClassName='input-element'
+                onCreate={handleCreate}
+                onChange={handleChange}
+                create={true}
+                createText={'Custom Amount'}
                 inputId={id}
+                noResultsText=''
+                hideArrow=true
+                inputClassName='input-element'
             />
         </div>
     </label>

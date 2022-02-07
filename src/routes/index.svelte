@@ -20,6 +20,7 @@
         <Banner
             date={banner.date}
             name={banner.name}
+            updateBannerOrbsUsed={updateBannerOrbsUsed}
         />
     {/each}
 </div>

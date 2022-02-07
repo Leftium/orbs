@@ -22,30 +22,43 @@ export canvas=null
 chart=null
 
 
+orbUseByBanner = {}
+orbUseByDate = {}
 initialOrbs = 300
 
-
-
 calculateChartData = () ->
-    cumulativeOrbs = []
+    estimatedOrbs = []
     netOrbs = []
 
+    orbUseByDate = {}
+    for id,use of orbUseByBanner
+        count = parseInt use.orbs, 10
+
+        orbUseByDate[use.date] = orbUseByDate[use.date] or 0
+        orbUseByDate[use.date] = orbUseByDate[use.date] + count
+
     sum = 0
+    sumUsed = 0
     currentOrbs = initialOrbs
     for orb in data.orbs
         sum += orb.y
-        cumulativeOrbs.push item =
+        sumUsed += (orbUseByDate[orb.x] or 0)
+
+        estimatedOrbs.push item =
             x: orb.x
             y: sum
 
         netOrbs.push item =
             x: orb.x
-            y: currentOrbs + sum
+            y: currentOrbs + sum - sumUsed
 
-        currentOrbs -= 20
+    {estimatedOrbs, netOrbs}
 
-    {cumulativeOrbs, netOrbs}
 
+updateBannerOrbsUsed = (id, date, orbs) ->
+    orbUseByBanner[id] = { date, orbs }
+    calculateChartData()
+    handleChange()
 
 makeAnnotation = (date, content, color='152,78,163', adjust=true) ->
     annotation =
@@ -82,15 +95,16 @@ for banner,i in data.banners
         label = ''
 
 handleChange = (e) ->
-    {cumulativeOrbs, netOrbs} = calculateChartData()
+    {estimatedOrbs, netOrbs} = calculateChartData()
 
-    chart.data.datasets[0].data = netOrbs
-    chart.data.datasets[1].data = cumulativeOrbs
+    if chart
+        chart.data.datasets[0].data = netOrbs
+        chart.data.datasets[1].data = estimatedOrbs
 
-    chart.update()
+        chart.update()
 
 onMount () ->
-    {cumulativeOrbs, netOrbs} = calculateChartData()
+    {estimatedOrbs, netOrbs} = calculateChartData()
 
     chart = new Chart canvas, options =
          type: 'line'
@@ -110,7 +124,7 @@ onMount () ->
                     below: 'rgba(220,50,47,0.1)'
             },{
                 label: 'Orb Income'
-                data: cumulativeOrbs
+                data: estimatedOrbs
                 borderColor: 'rgb(77,175,74)'
                 backgroundColor: 'rgb(77,175,74)'
                 borderWidth: 5
