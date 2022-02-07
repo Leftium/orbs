@@ -1068,11 +1068,6 @@ vite-plugin-coffee@^2.2.1:
     "@babel/preset-react" "^7.14.5"
     coffeescript "^2.5.1"
 
-vite-plugin-plain-text@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/vite-plugin-plain-text/-/vite-plugin-plain-text-1.1.4.tgz#a370f240c206951db8dd47f4cd495bbdc178b8fc"
-  integrity sha512-vsqrq79wZBn4WUC1aQvo8rXPdZX5Ekqa3fTpGWHA5Q8GwcGC6+ILmihOu9qP6jZrX43rCUTBJGVNmedDAB31Uw==
-
 vite@^2.7.2:
   version "2.7.13"
   resolved "https://registry.yarnpkg.com/vite/-/vite-2.7.13.tgz#99b56e27dfb1e4399e407cf94648f5c7fb9d77f5"

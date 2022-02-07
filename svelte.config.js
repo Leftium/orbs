@@ -1,7 +1,4 @@
 import coffee from "vite-plugin-coffee";
-import plainTextPlugin from 'vite-plugin-plain-text';
-let plainText = plainTextPlugin.default
-
 import preprocess from "svelte-preprocess";
 import adapter from "@sveltejs/adapter-auto";
 
@@ -15,7 +12,6 @@ const config = {
         coffee({
           jsx: false,
         }),
-        plainText(/\.(txt|md)$/),
       ],
     },
   },

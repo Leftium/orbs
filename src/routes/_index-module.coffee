@@ -5,16 +5,22 @@ dayjs.extend customParseFormat
 
 DEFAULT_SOURCE_URL = 'https://www.reddit.com/r/FireEmblemHeroes/comments/s19x8o'
 
+sourceUrlRE = ///https://www.reddit.com/r/FireEmblemHeroes/comments/([^/]+).*///
 orbLineRE = /^\D{3} (\D{3} \d{1,2}): (\d+) orb/
 bannerLineRE = /^\*\s+(\d{4}-\d{2}-\d{2}): (.*)/
 
 _load = ({ url, params, props, fetch, session, stuff }) ->
-    if url.searchParams.get('mock') is '1'
-        {plainText:txt} = await import('$lib/txt/s19x8o.md')
-        markdown = txt
-        sourceUrl = DEFAULT_SOURCE_URL
+    sourceUrl = url.searchParams.get('u') or DEFAULT_SOURCE_URL
+
+    matches = sourceUrl.match sourceUrlRE
+    slug = matches[1]
+
+    # First try local cache.
+    response = await fetch "/txt/#{slug}.md"
+    if response.status is 200
+        markdown = await response.text()
     else
-        sourceUrl = url.searchParams.get('u') or DEFAULT_SOURCE_URL
+        console.log "FETCH: #{sourceUrl}"
         response = await fetch "#{url.origin}/api/r2md/#{sourceUrl}"
         markdown = await response.text()
 
