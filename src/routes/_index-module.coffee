@@ -26,6 +26,13 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
 
     lines = markdown.split '\n'
 
+    matches = lines[0].match /(\d{4})-(\d{2})/
+
+    year = parseInt matches[1]
+    month = parseInt matches[2]
+
+    lastCompleteJan = if month is 1 then year-1 else year
+
     orbs = []
     banners = []
     for line in lines
@@ -33,7 +40,17 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
             [_, date, count] = matches
             count = parseInt count, 10
 
-            date = dayjs(date, 'MMM D').format 'YYYY-MM-DD'
+            month = date[0..2]
+
+            if (month is 'Jan') and (year is lastCompleteJan)
+                year++
+
+            if (month isnt 'Jan') and (year isnt lastCompleteJan)
+                lastCompleteJan++
+
+            date = "#{date} #{year}"
+
+            date = dayjs(date, 'MMM D YYYY').format 'YYYY-MM-DD'
 
             orbs.push item =
                 x: date
