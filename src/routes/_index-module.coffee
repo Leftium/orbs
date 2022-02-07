@@ -7,7 +7,7 @@ DEFAULT_SOURCE_URL = 'https://www.reddit.com/r/FireEmblemHeroes/comments/s19x8o'
 
 sourceUrlRE = ///https://www.reddit.com/r/FireEmblemHeroes/comments/([^/]+).*///
 orbLineRE = /^\D{3} (\D{3} \d{1,2}): (\d+) orb/
-bannerLineRE = /^\*\s+(\d{4}-\d{2}-\d{2}): (.*)/
+bannerLineRE = /^\*\s+(\d{4}-\d{2}-\d{2}):? (.*)/
 
 _load = ({ url, params, props, fetch, session, stuff }) ->
     sourceUrl = url.searchParams.get('u') or DEFAULT_SOURCE_URL
