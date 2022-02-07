@@ -3,7 +3,16 @@ import * as cheerio from 'cheerio'
 import TurndownService from 'turndown'
 turndownService = new TurndownService()
 
+sourceUrlRE = ///https://www.reddit.com/r/FireEmblemHeroes/comments/([^/]+).*///
+
 export get = ({request, url, params, locals, platform}) ->
+
+    matches = url.pathname.match sourceUrlRE
+
+    slug = matches[1] or 'filename'
+
+    filename = "#{slug}.md"
+
     response = await fetch params.url
     html = await response.text()
 
@@ -17,7 +26,11 @@ export get = ({request, url, params, locals, platform}) ->
 
     markdown = "# #{title}\n\n#{markdown}"
 
+    headers =
+        'Content-Disposition': "attachment; filename=#{filename}"
+
     return output =
         status: 200
+        headers: headers
         body: markdown
 
