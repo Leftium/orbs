@@ -57,5 +57,9 @@
         margin: auto;
         height: 80vh;
     }
+
+    .banners {
+        margin-bottom: 240px;
+    }
 </style>
 
