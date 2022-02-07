@@ -154,6 +154,7 @@ onMount () ->
                 x:
                     type: 'time'
                     time:
+                        unit: 'day'
                         tooltipFormat: 'MMM d'
                         title:
                             display: true
