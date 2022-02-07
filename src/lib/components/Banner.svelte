@@ -1,7 +1,7 @@
 <script src='./banner.coffee'></script>
 
 <label>
-    {date} {name}
+    {displayDate} {name}
     <input
         type=number
         inputmode='decimal'
