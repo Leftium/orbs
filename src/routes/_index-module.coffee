@@ -11,6 +11,8 @@ bannerLineRE = /^\*\s+(\d{4}-\d{2}-\d{2}): (.*)/
 
 _load = ({ url, params, props, fetch, session, stuff }) ->
     sourceUrl = url.searchParams.get('u') or DEFAULT_SOURCE_URL
+    if slug = url.searchParams.get 's'
+        sourceUrl = "https://www.reddit.com/r/FireEmblemHeroes/comments/#{slug}"
     origin = url.origin
     markdownUrl="#{origin}/api/r2md/#{sourceUrl}"
 
