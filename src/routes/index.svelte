@@ -16,14 +16,12 @@
     </label>
 </div>
 <div class='banners'>
-    <Banner
-        date='2022-05-25'
-        name='Birthday'
-    />
-    <Banner
-        date='2022-12-25'
-        name='Christmas'
-    />
+    {#each data.banners as banner}
+        <Banner
+            date={banner.date}
+            name={banner.name}
+        />
+    {/each}
 </div>
 
 
