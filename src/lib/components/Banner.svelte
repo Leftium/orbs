@@ -1,3 +1,8 @@
+<script context="module">
+    let count = 0
+</script>
+
+
 <script src='./banner.coffee'></script>
 
 <div class=main>
@@ -15,6 +20,7 @@
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 inputClassName='input-element'
+                inputId={id}
             />
         </div>
     </label>
