@@ -20,6 +20,7 @@ import { onMount } from 'svelte'
 export data=null
 export origin=null
 export sourceUrl=null
+export targetUrl=sourceUrl
 
 ```$: {```
 markdownUrl="#{origin}/api/r2md/#{sourceUrl}"

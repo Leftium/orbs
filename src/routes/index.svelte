@@ -12,7 +12,7 @@
 
         <div>
         <input
-            bind:value={sourceUrl}
+            bind:value={targetUrl}
         />
     </label>
 </div>
