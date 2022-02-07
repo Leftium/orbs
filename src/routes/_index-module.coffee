@@ -3,8 +3,6 @@ import customParseFormat from 'dayjs/plugin/customParseFormat.js'
 
 dayjs.extend customParseFormat
 
-import {plainText as txt} from '$lib/txt/s19x8o.md'
-
 DEFAULT_SOURCE_URL = 'https://www.reddit.com/r/FireEmblemHeroes/comments/s19x8o'
 
 orbLineRE = /^\D{3} (\D{3} \d{1,2}): (\d+) orb/
@@ -12,6 +10,7 @@ bannerLineRE = /^\*\s+(\d{4}-\d{2}-\d{2}): (.*)/
 
 _load = ({ url, params, props, fetch, session, stuff }) ->
     if url.searchParams.get('mock') is '1'
+        {plainText:txt} = await import('$lib/txt/s19x8o.md')
         markdown = txt
         sourceUrl = DEFAULT_SOURCE_URL
     else
