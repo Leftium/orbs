@@ -5,9 +5,9 @@
     <canvas bind:this={canvas} width="400" height="400"></canvas>
 </div>
 
-<div>
+<div class=initial-orbs>
     <label>
-        Initial Orbs
+        <div><span>Initial Orbs</span><div>
         <input
             type=number
             inputmode='decimal'
@@ -40,6 +40,17 @@
     label {
       display: block;
     }
+
+    .initial-orbs {
+        font-family: sans-serif;
+        margin-left: 105px;
+        margin-bottom: 20px;
+    }
+    span {
+        font-size: 120%;
+        font-weight: 700;
+    }
+
 
     .chart {
         position: relative;
