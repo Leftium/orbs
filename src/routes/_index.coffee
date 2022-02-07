@@ -113,6 +113,9 @@ handleChange = (e) ->
 
         chart.update()
 
+selectOnFocus = (e) ->
+    @select()
+
 onMount () ->
     {estimatedOrbs, netOrbs} = calculateChartData()
 

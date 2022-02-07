@@ -13,6 +13,7 @@
         <div>
         <input
             bind:value={targetUrl}
+            on:focus={selectOnFocus}
         />
     </label>
 </div>
