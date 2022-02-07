@@ -26,8 +26,10 @@ export get = ({request, url, params, locals, platform}) ->
 
     markdown = "# #{title}\n\n#{markdown}"
 
-    headers =
-        'Content-Disposition': "attachment; filename=#{filename}"
+    headers = {}
+    if url.searchParams.get('dl') is '1'
+        headers =
+            'Content-Disposition': "attachment; filename=#{filename}"
 
     return output =
         status: 200
