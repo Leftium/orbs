@@ -20,8 +20,9 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
     if response.status is 200
         markdown = await response.text()
     else
-        console.log "FETCH: #{sourceUrl}"
-        response = await fetch "#{url.origin}/api/r2md/#{sourceUrl}"
+        apiUrl = "#{url.origin}/api/r2md/#{sourceUrl}"
+        console.log "FETCH: #{apiUrl}"
+        response = await fetch apiUrl 
         markdown = await response.text()
 
     lines = markdown.split '\n'
