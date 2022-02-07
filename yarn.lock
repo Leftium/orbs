@@ -963,6 +963,11 @@ semver@^6.3.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
+simple-svelte-autocomplete@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/simple-svelte-autocomplete/-/simple-svelte-autocomplete-2.2.4.tgz#74a74fc4df154e78ee60a90d71fdf1ae790d11c7"
+  integrity sha512-a/1ceBoLl5UOrdyOhFL1mXA1o8P7tXO1wmHs4IBR1UeI4cCHEojOKnpMldfSrKNP3gxmqm/F+hohReoPnbFgeA==
+
 sorcery@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/sorcery/-/sorcery-0.10.0.tgz#8ae90ad7d7cb05fc59f1ab0c637845d5c15a52b7"

@@ -17,6 +17,7 @@
     "coffeescript": "^2.6.1",
     "dayjs": "^1.10.7",
     "luxon": "^2.3.0",
+    "simple-svelte-autocomplete": "^2.2.4",
     "svelte": "^3.44.0",
     "svelte-preprocess": "^4.10.1",
     "turndown": "^7.1.1",

@@ -6,10 +6,17 @@
             <span class=date>{displayDate}</span>
             <span class=name>{name}</span>
         </div>
-        <input
-            data-date='{date}'
-            value=10
-        />
+        <div class=input-wrapper class:hideDropdown>
+            <AutoComplete
+                items={suggestions}
+                bind:selectedItem={selectedOption}
+                noResultsText=''
+                hideArrow=true
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                inputClassName='input-element'
+            />
+        </div>
     </label>
 </div>
 
@@ -38,9 +45,15 @@
         font-size: 120%;
         font-weight: 700;
     }
-    input {
+    .input-wrapper {
         margin-left: 105px;
     }
+    :global(.input-element) {
+        width: 320px !important;
+    }
 
+    .hideDropdown :global(.autocomplete-list) {
+        display: none;
+    }
 </style>
 
