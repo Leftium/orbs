@@ -1,16 +1,31 @@
 <script context=module src='./_index-module.coffee'></script>
 <script src='./_index.coffee'></script>
 
-<canvas bind:this={canvas} width="400" height="400"></canvas>
+<div class=chart>
+    <canvas bind:this={canvas} width="400" height="400"></canvas>
+</div>
 
-<label>
-    Initial Orbs
-    <input
-        type=number
-        inputmode='decimal'
-        bind:value={initialOrbs}
-        on:change={handleChange} />
-</label>
+<div>
+    <label>
+        Initial Orbs
+        <input
+            type=number
+            inputmode='decimal'
+            bind:value={initialOrbs}
+            on:change={handleChange} />
+    </label>
+</div>
+<div class='banners'>
+    <Banner
+        date='2022-05-25'
+        name='Birthday'
+    />
+    <Banner
+        date='2022-12-25'
+        name='Christmas'
+    />
+</div>
+
 
 <style>
     input::-webkit-outer-spin-button,
@@ -23,6 +38,15 @@
     input[type=number] {
       -moz-appearance: textfield;
     }
-</style>
 
+    label {
+      display: block;
+    }
+
+    .chart {
+        position: relative;
+        margin: auto;
+        height: 80vh;
+    }
+</style>
 
