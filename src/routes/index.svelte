@@ -5,7 +5,8 @@
     <label>
         <div>
             <span>FEH Orb Planner</span>
-            (<a href={sourceUrl}>{sourceUrl}</a>)
+            (Source: <a href={sourceUrl}>html</a> |
+            <a href={markdownUrl}>markdown</a>)
         <div>
         <input
             bind:value={sourceUrl}

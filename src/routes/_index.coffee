@@ -16,8 +16,14 @@ Chart.register annotationPlugin
 
 import { onMount } from 'svelte'
 
-export data=null  # Prop passed from load().
+# Props passed from load().
+export data=null
+export origin=null
 export sourceUrl=null
+
+```$: {```
+markdownUrl="#{origin}/api/r2md/#{sourceUrl}"
+```}```
 
 export canvas=null
 chart=null

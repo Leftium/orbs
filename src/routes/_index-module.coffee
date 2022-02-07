@@ -11,6 +11,8 @@ bannerLineRE = /^\*\s+(\d{4}-\d{2}-\d{2}): (.*)/
 
 _load = ({ url, params, props, fetch, session, stuff }) ->
     sourceUrl = url.searchParams.get('u') or DEFAULT_SOURCE_URL
+    origin = url.origin
+    markdownUrl="#{origin}/api/r2md/#{sourceUrl}"
 
     matches = sourceUrl.match sourceUrlRE
     slug = matches[1]
@@ -20,9 +22,8 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
     if response.status is 200
         markdown = await response.text()
     else
-        apiUrl = "#{url.origin}/api/r2md/#{sourceUrl}"
-        console.log "FETCH: #{apiUrl}"
-        response = await fetch apiUrl 
+        console.log "FETCH: #{markdownUrl}"
+        response = await fetch markdownUrl
         markdown = await response.text()
 
     lines = markdown.split '\n'
@@ -65,6 +66,6 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
     data = {orbs, banners}
 
     return output =
-        props: { data, sourceUrl }
+        props: { data, sourceUrl, origin }
 
 `export const load = _load`
