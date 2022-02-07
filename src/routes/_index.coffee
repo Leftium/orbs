@@ -17,9 +17,12 @@ Chart.register annotationPlugin
 import { onMount } from 'svelte'
 
 export data=null  # Prop passed from load().
+export sourceUrl=null
 
 export canvas=null
 chart=null
+
+
 
 
 orbUseByBanner = {}

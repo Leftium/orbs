@@ -1,6 +1,19 @@
 <script context=module src='./_index-module.coffee'></script>
 <script src='./_index.coffee'></script>
 
+<div class=source-url>
+    <label>
+        <div>
+            <span>FEH Orb Planner</span>
+            (<a href={sourceUrl}>{sourceUrl}</a>)
+        <div>
+        <input
+            bind:value={sourceUrl}
+        />
+    </label>
+</div>
+
+
 <div class=chart>
     <canvas bind:this={canvas} width="400" height="400"></canvas>
 </div>
@@ -42,10 +55,15 @@
       display: block;
     }
 
-    .initial-orbs {
+    .initial-orbs,
+    .source-url{
         font-family: sans-serif;
         margin-left: 105px;
         margin-bottom: 20px;
+    }
+
+    .source-url input {
+        width: 80%;
     }
     span {
         font-size: 120%;
