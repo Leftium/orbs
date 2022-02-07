@@ -3,8 +3,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat.js'
 
 dayjs.extend customParseFormat
 
-
-import mockData from '$lib/json/data.json'
+import {plainText as txt} from '$lib/txt/s19x8o.md'
 
 DEFAULT_SOURCE_URL = 'https://www.reddit.com/r/FireEmblemHeroes/comments/s19x8o'
 
@@ -13,13 +12,14 @@ bannerLineRE = /^\*\s+(\d{4}-\d{2}-\d{2}): (.*)/
 
 _load = ({ url, params, props, fetch, session, stuff }) ->
     if url.searchParams.get('mock') is '1'
-        data = mockData
+        markdown = txt
+        sourceUrl = DEFAULT_SOURCE_URL
     else
         sourceUrl = url.searchParams.get('u') or DEFAULT_SOURCE_URL
         response = await fetch "#{url.origin}/api/r2md/#{sourceUrl}"
-        data     = await response.json()
+        markdown = await response.text()
 
-    lines = data.markdown.split '\n'
+    lines = markdown.split '\n'
 
     orbs = []
     banners = []
@@ -39,8 +39,7 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
 
             banners.push { date, name }
 
-    data.orbs = orbs
-    data.banners = banners
+    data = {orbs, banners}
 
     return output =
         props: { data, sourceUrl }
