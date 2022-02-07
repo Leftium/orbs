@@ -113,6 +113,12 @@ handleChange = (e) ->
 
         chart.update()
 
+handleKeyDown = (e) ->
+    if e.code is 'Enter'
+        url = "/?u=#{@value}"
+        document.location = url
+
+
 selectOnFocus = (e) ->
     @select()
 

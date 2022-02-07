@@ -7,13 +7,14 @@
             <span>FEH Orb Planner</span>
             Source: <a href={sourceUrl}>r/FireEmblemHeroes</a> |
             Markdown: <a href={markdownUrl+'?dl=0'}>view</a>
-            <a href={markdownUrl+'?dl=1'}>download</a> |
+            <a href={markdownUrl+'?dl=1'} rel=external>download</a> |
             <a href="https://www.reddit.com/r/FireEmblemHeroes/search?q=%22Estimate%20of%20upcoming%20orbs%22&restrict_sr=1&sort=new">More Orb Estimates</a>
 
         <div>
         <input
             bind:value={targetUrl}
             on:focus={selectOnFocus}
+            on:keydown={handleKeyDown}
         />
     </label>
 </div>
