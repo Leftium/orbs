@@ -6,7 +6,7 @@ dayjs.extend customParseFormat
 
 import mockData from '$lib/json/data.json'
 
-sourceUrl = 'https://www.reddit.com/r/FireEmblemHeroes/comments/s19x8o'
+DEFAULT_SOURCE_URL = 'https://www.reddit.com/r/FireEmblemHeroes/comments/s19x8o'
 
 orbLineRE = /^\D{3} (\D{3} \d{1,2}): (\d+) orb/
 bannerLineRE = /^\*\s+(\d{4}-\d{2}-\d{2}): (.*)/
@@ -15,6 +15,7 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
     if url.searchParams.get('mock') is '1'
         data = mockData
     else
+        sourceUrl = url.searchParams.get('u') or DEFAULT_SOURCE_URL
         response = await fetch "#{url.origin}/api/r2md/#{sourceUrl}"
         data     = await response.json()
 
