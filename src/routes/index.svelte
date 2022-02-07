@@ -51,7 +51,10 @@
         font-size: 120%;
         font-weight: 700;
     }
-
+    input {
+        padding: 5px 11px;
+        width: 294px;
+    }
 
     .chart {
         position: relative;
