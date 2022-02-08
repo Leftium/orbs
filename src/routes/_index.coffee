@@ -1,13 +1,9 @@
-import { DateTime } from 'luxon'
-
 import {Chart, registerables} from 'chart.js/dist/chart.esm'
-Chart.register(...registerables)
-
-import {Tooltip} from 'chart.js/dist/chart.esm'
+chart.register ...registerables
 
 import 'chartjs-adapter-luxon'
 
-
+import {Tooltip} from 'chart.js/dist/chart.esm'
 Tooltip.positioners.topPositioner = (elements, eventPosition) ->
     result =
         x: elements[0]?.element.x
