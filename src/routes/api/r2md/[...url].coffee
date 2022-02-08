@@ -9,7 +9,7 @@ export get = ({request, url, params, locals, platform}) ->
 
     matches = url.pathname.match sourceUrlRE
 
-    slug = matches[1] or 'filename'
+    slug = matches?[1] or 'filename'
 
     filename = "#{slug}.md"
 
