@@ -1,6 +1,7 @@
 <script context=module src='./_index-module.coffee'></script>
 <script src='./_index.coffee'></script>
 
+<!-- svelte-ignore a11y-label-has-associated-control -->
 <div class=source-url>
     <label>
         <div>
@@ -24,6 +25,7 @@
     <canvas bind:this={canvas} width="400" height="400"></canvas>
 </div>
 
+<!-- svelte-ignore a11y-label-has-associated-control -->
 <div class=initial-orbs>
     <label>
         <div><span>My Initial Orbs</span><div>
