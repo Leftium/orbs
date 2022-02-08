@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio'
 import TurndownService from 'turndown'
 turndownService = new TurndownService()
 
-sourceUrlRE = ///https://www.reddit.com/r/FireEmblemHeroes/comments/([^/]+).*///
+sourceUrlRE = ////comments/([^/]+).*///
 
 export get = ({request, url, params, locals, platform}) ->
 
