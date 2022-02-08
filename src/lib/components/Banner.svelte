@@ -5,7 +5,6 @@
 
 <script src='./banner.coffee'></script>
 
-<!-- svelte-ignore a11y-label-has-associated-control -->
 <div class=main>
     <label>
         <div>
