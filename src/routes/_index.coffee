@@ -70,7 +70,7 @@ updateBannerOrbsUsed = (id, date, orbs) ->
     calculateChartData()
     handleChange()
 
-makeAnnotation = (date, content, color='152,78,163', adjust=true) ->
+makeAnnotation = (date, content, color='152,78,163', adjust=true, position='end') ->
     annotation =
         type: 'line'
         scaleID: 'x'
@@ -86,14 +86,14 @@ makeAnnotation = (date, content, color='152,78,163', adjust=true) ->
             font:
                 size: 15
                 style: 'normal'
-            position: 'end'
+            position: position
             rotation: 270
             xAdjust: 11
             enabled: true
 
 annotations = []
 
-annotations.push makeAnnotation new Date(), 'Today', '0,0,0', false
+annotations.push makeAnnotation new Date(), 'Today', '0,0,0', false, 'start'
 
 label = ''
 for banner,i in data.banners
