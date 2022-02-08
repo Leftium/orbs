@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 
-import Chart from 'chart.js/auto'
+import Chart from 'chart.js/auto/auto.esm'
 import 'chartjs-adapter-luxon'
 
 ### This import fails on Vercel.
