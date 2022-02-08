@@ -11,7 +11,7 @@ import 'chartjs-adapter-luxon'
 Tooltip.positioners.topPositioner = (elements, eventPosition) ->
     result =
         x: elements[0]?.element.x
-        y: eventPosition.y
+        y: 0
 
 import Banner from '$lib/components/Banner.svelte'
 
