@@ -1,15 +1,67 @@
 import { DateTime } from 'luxon'
 
-import Chart from 'chart.js/auto/auto.esm'
-import 'chartjs-adapter-luxon'
+import {
+    Chart
+    ArcElement
+    LineElement
+    BarElement
+    PointElement
+    BarController
+    BubbleController
+    DoughnutController
+    LineController
+    PieController
+    PolarAreaController
+    RadarController
+    ScatterController
+    CategoryScale
+    LinearScale
+    LogarithmicScale
+    RadialLinearScale
+    TimeScale
+    TimeSeriesScale
+    Decimation
+    Filler
+    Legend
+    Title
+    Tooltip
+    SubTitle
+} from 'chart.js'
 
-### This import fails on Vercel.
-import { Tooltip } from 'chart.js'
+Chart.register(
+    ArcElement
+    LineElement
+    BarElement
+    PointElement
+    BarController
+    BubbleController
+    DoughnutController
+    LineController
+    PieController
+    PolarAreaController
+    RadarController
+    ScatterController
+    CategoryScale
+    LinearScale
+    LogarithmicScale
+    RadialLinearScale
+    TimeScale
+    TimeSeriesScale
+    Decimation
+    Filler
+    Legend
+    Title
+    Tooltip
+    SubTitle
+)
+
 Tooltip.positioners.topPositioner = (elements, eventPosition) ->
     result =
         x: elements[0]?.element.x
-        y: eventPosition.y
-###
+        y: 0
+
+
+import 'chartjs-adapter-luxon'
 
 import Banner from '$lib/components/Banner.svelte'
 
@@ -166,8 +218,7 @@ onMount () ->
                  tooltip:
                     mode: 'index'
                     intersect: false
-                    # position: 'topPositioner'
-                    position: 'nearest'
+                    position: 'topPositioner'
 
             animation: false
             scales:
