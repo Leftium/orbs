@@ -1,4 +1,5 @@
-import Chart from 'chart.js/auto'
+import {Chart, registerables} from 'chart.js/dist/chart.esm'
+Chart.register ...registerables
 
 import 'chartjs-adapter-luxon'
 
