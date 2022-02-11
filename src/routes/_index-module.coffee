@@ -17,7 +17,7 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
     markdownUrl="#{origin}/api/r2md/#{sourceUrl}"
 
     matches = sourceUrl.match sourceUrlRE
-    slug = matches[1]
+    slug = slug or matches?[1]
 
     # First try local cache.
     response = await fetch "/txt/#{slug}.md"
@@ -33,8 +33,10 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
 
     matches = lines[0].match /(\d{4})-(\d{2})/
 
-    year = parseInt matches[1]
-    month = parseInt matches[2]
+
+    now = dayjs()
+    year = (parseInt matches?[1]) or now.year()
+    month = (parseInt matches?[2]) or (now.month() + 1)
 
     lastCompleteJan = if month is 1 then year-1 else year
 
