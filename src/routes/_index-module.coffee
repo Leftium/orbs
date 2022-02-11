@@ -22,6 +22,7 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
     # First try local cache.
     response = await fetch "/txt/#{slug}.md"
     if response.status is 200
+        console.log "CACHED: /txt/#{slug}.md"
         markdown = await response.text()
     else
         console.log "FETCH: #{markdownUrl}"
