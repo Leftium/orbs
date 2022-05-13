@@ -6,7 +6,7 @@ dayjs.extend customParseFormat
 DEFAULT_SOURCE_URL = 'https://www.reddit.com/r/FireEmblemHeroes/comments/s19x8o'
 
 sourceUrlRE = ///https://www.reddit.com/r/FireEmblemHeroes/comments/([^/]+).*///
-orbLineRE = /^\D{3} (\D{3} \d{1,2}): (\d+) orb/
+orbLineRE = /^\D{3} ((\D{3})\D* (\d{1,2})): (\d+) orb/
 bannerLineRE = /^\*\s+(\d{4}-\d{2}-\d{2}):? (.*)/
 
 _load = ({ url, params, props, fetch, session, stuff }) ->
@@ -44,10 +44,9 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
     banners = []
     for line in lines
         if matches = line.match orbLineRE
-            [_, date, count] = matches
-            count = parseInt count, 10
+            [_, _, month, date, count] = matches
 
-            month = date[0..2]
+            count = parseInt count, 10
 
             if (month is 'Jan') and (year is lastCompleteJan)
                 year++
@@ -55,12 +54,12 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
             if (month isnt 'Jan') and (year isnt lastCompleteJan)
                 lastCompleteJan++
 
-            date = "#{date} #{year}"
+            fulldate = "#{month} #{date} #{year}"
 
-            date = dayjs(date, 'MMM D YYYY').format 'YYYY-MM-DD'
+            fulldate = dayjs(fulldate, 'MMM D YYYY').format 'YYYY-MM-DD'
 
             orbs.push item =
-                x: date
+                x: fulldate
                 y: count
 
         if matches = line.match bannerLineRE
