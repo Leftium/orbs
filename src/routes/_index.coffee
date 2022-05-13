@@ -24,6 +24,7 @@ export targetUrl=sourceUrl
 
 ```$: {```
 markdownUrl="#{origin}/api/r2md/#{sourceUrl}"
+calendarUrl="#{origin}/calendar/?u=#{sourceUrl}"
 ```}```
 
 export canvas=null

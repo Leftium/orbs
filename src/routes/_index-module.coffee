@@ -40,13 +40,16 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
 
     lastCompleteJan = if month is 1 then year-1 else year
 
+    total = 0
     orbs = []
     banners = []
+    calendarData = []
     for line in lines
         if matches = line.match orbLineRE
             [_, _, month, date, count] = matches
 
             count = parseInt count, 10
+            total += count
 
             if (month is 'Jan') and (year is lastCompleteJan)
                 year++
@@ -56,18 +59,70 @@ _load = ({ url, params, props, fetch, session, stuff }) ->
 
             fulldate = "#{month} #{date} #{year}"
 
-            fulldate = dayjs(fulldate, 'MMM D YYYY').format 'YYYY-MM-DD'
+            theDayjs = dayjs(fulldate, 'MMM D YYYY')
+
+            fulldate = theDayjs.format 'YYYY-MM-DD'
 
             orbs.push item =
                 x: fulldate
                 y: count
+
+            day = theDayjs.day()
+
+            calendarData.push item =
+                day:   day
+                month: month
+                date:  date
+                year:  year
+                count: count
+                total: total
 
         if matches = line.match bannerLineRE
             [_, date, name] = matches
 
             banners.push { date, name }
 
-    data = {orbs, banners}
+        generateCalendar = (data) ->
+            ```
+            let output = ''
+            let week = [];
+
+            function generateWeek(week) {
+                output += '|';
+                    for (let i=0; i<7; i++) {
+                        let d = week[i] || '';
+                        output += d + '|';
+                    }
+                    output += '\n';
+            }
+
+            let prevMonth = ''
+            for (let item of data) {
+                let { day, month, date, year, count, total } = item;
+
+                if (prevMonth != month) {
+                    output += `\n**${month} ${year}**\n\n`
+                    output += '|*Sun*|*Mon*|*Tue*|*Wed*|*Thu*|*Fri*|*Sat*|\n'
+                    output += '|-:|-:|-:|-:|-:|-:|-:|\n'
+                    prevMonth = month;
+                }
+
+                week[day] = `${total} **^(${date})**`
+
+
+                if (day == 6) {
+                    generateWeek(week);
+                    week = [];
+                }
+            }
+            if (week.length) {
+                generateWeek(week);
+            }
+            ```
+            output
+
+    calendar = generateCalendar(calendarData)
+    data = {orbs, banners, calendar}
 
     return output =
         props: { data, sourceUrl, origin }
