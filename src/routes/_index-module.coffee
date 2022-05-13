@@ -3,7 +3,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat.js'
 
 dayjs.extend customParseFormat
 
-DEFAULT_SOURCE_URL = 'https://www.reddit.com/r/FireEmblemHeroes/comments/s19x8o'
+DEFAULT_SOURCE_URL = 'https://www.reddit.com/r/FireEmblemHeroes/comments/un54ed'
 
 sourceUrlRE = ///https://www.reddit.com/r/FireEmblemHeroes/comments/([^/]+).*///
 orbLineRE = /^\D{3} ((\D{3})\D* (\d{1,2})): (\d+) orb/
